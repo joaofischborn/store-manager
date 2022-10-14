@@ -6,7 +6,7 @@ const connection = require('../../../src/db/connection');
 
 const { allProductsResponse } = require('../../../__tests__/_dataMock')
 
-describe('Testes de unidade do model de produtos', function () {
+describe('Testes de unidade de ProductsModel', function () {
   afterEach(sinon.restore);
 
   it('Buscando por todos os produtos', async function () {

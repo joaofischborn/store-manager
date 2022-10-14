@@ -10,10 +10,10 @@ const productsService = require('../../../src/services/products.service')
 const { allProductsResponse } = require('../../../__tests__/_dataMock')
 
 
-describe("Teste de unidade de ProductsController", function () {
+describe("Testes de unidade de ProductsController", function () {
   afterEach(sinon.restore);
 
-  it("Listando todos os produtos", async function () {
+  it("Buscando por todos os produtos", async function () {
     const res = {};
     const req = {};
     const productsList = [allProductsResponse];
