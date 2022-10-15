@@ -1,4 +1,4 @@
-const productsService = require('../services');
+const { productsService } = require('../services');
 // const errorMap = require('../utils/errorMap');
 
 const listAllProducts = async (_req, res) => {
