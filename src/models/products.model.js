@@ -20,8 +20,15 @@ const insertNewProduct = async (newProduct) => {
     'INSERT INTO StoreManager.products (name) VALUE (?)',
     [newProduct],
   );
-  console.log(insertId);
   return insertId;
 };
 
-module.exports = { findAll, findById, insertNewProduct };
+const deleteProduct = async (id) => {
+  const result = await connection.execute(
+    'DELETE FROM StoreManager.products WHERE id = ?',
+    [id],
+  );
+  return result;
+};
+
+module.exports = { findAll, findById, insertNewProduct, deleteProduct };
