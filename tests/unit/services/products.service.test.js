@@ -40,14 +40,6 @@ describe('Testes de unidade de ProductsService', function () {
     expect(result.message).to.be.deep.equal({ id: 6, name: 'Produto1' })
   });
 
-  it('Deletando um produto inexistente', async function () {
-    sinon.stub(productsModel, "deleteProduct").resolves({ type: null, message: 1 });
-
-    const result = await productsService.deleteProduct(1);
-    
-    expect(result.message).to.be.equal("Product not found");
-  });
-
   it('Deletando um produto existente', async function () {
     sinon.stub(productsModel, 'deleteProduct').resolves({ type: null });
 
