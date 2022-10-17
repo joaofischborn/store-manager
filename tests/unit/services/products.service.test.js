@@ -22,4 +22,37 @@ describe('Testes de unidade de ProductsService', function () {
 
     expect(result.message).to.be.deep.equal(allProductsResponse[0]);
   });
+
+  it('Buscando por um id que não existe', async function () {
+    sinon.stub(productsModel, 'findById').resolves();
+
+    const result = await productsService.findById(6);
+
+    expect(result.message).to.be.deep.equal('Product not found');
+  });
+
+  it('Inserindo um novo produto', async function () {
+    sinon.stub(productsModel, 'insertNewProduct').resolves({ insertId: 6 });
+    sinon.stub(productsModel, 'findById').resolves({ id: 6, name: 'Produto1' });
+
+    const result = await productsService.insertNewProduct('Produto1')
+
+    expect(result.message).to.be.deep.equal({ id: 6, name: 'Produto1' })
+  });
+
+  it('Deletando um produto inexistente', async function () {
+    sinon.stub(productsModel, "deleteProduct").resolves({ type: null, message: 1 });
+
+    const result = await productsService.deleteProduct(1);
+    
+    expect(result.message).to.be.equal("Product not found");
+  });
+
+  it('Deletando um produto existente', async function () {
+    sinon.stub(productsModel, 'deleteProduct').resolves({ type: null });
+
+    const result = await productsService.deleteProduct(2)
+    
+    expect(result.type).to.be.equal(null)
+  });
 })
