@@ -12,11 +12,11 @@ const getSaleById = async (req, res) => {
   res.status(200).json(message);
 };
 
-// const insertNewSale = async (req, res) => {
-//   const bodySale = req.body;
-//   const { type, message } = await salesService.insertNewSale(bodySale);
-//   if (type) return res.status(404).json(message);
-//   res.status(200).json(message);
-// };
+const insertSale = async (req, res) => {
+  const bodySale = req.body;
+  const { type, message } = await salesService.insertSale(bodySale);
+  if (type) return res.status(404).json(message);
+  res.status(200).json(message);
+};
 
-module.exports = { getAllSales, getSaleById };
+module.exports = { getAllSales, getSaleById, insertSale };

@@ -11,10 +11,10 @@ const getSaleById = async (id) => {
   return { type: 'SALE_NOT_FOUND', message: 'Sale not found' };
 };
 
-// const insertNewSale = async (productId, quantity) => {
-//   console.log('SERVICE');
-//   const newSale = await salesModel.insertNewSale(productId, quantity);
-//   return { type: null, message: newSale };
-// };
+const insertSale = async (sale) => {
+  console.log(sale);
+  const newSale = await salesModel.insertSale(sale);
+  return { type: null, message: newSale };
+};
 
-module.exports = { getAllSales, getSaleById };
+module.exports = { getAllSales, getSaleById, insertSale };
